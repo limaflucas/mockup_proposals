@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Habaneros – Modern Taco Bar (Option A)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23059969' d='M12 38c0-12 10-22 22-22 8 0 14 5 18 11 2 3 3 6 3 9 0 10-9 18-21 18S12 48 12 38z'/%3E%3C/svg%3E"/>
+  <style>
+    :root{
+      --bg:#fee7d0;           /* warm background */
+      --ink:#1f2937;          /* gray-800 */
+      --muted:#6b7280;        /* gray-500 */
+      --brand:#059669;        /* primary (green) */
+      --brand-2:#10b981;      /* secondary accent (green) */
+      --card:#ffffff;         /* white */
+      --ok:#059669;           /* success */
+      --shadow:0 10px 20px rgba(0,0,0,.08);
+      --radius:18px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink)}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; background:rgba(255,250,244,.85); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
+    .logo{font-weight:800; letter-spacing:.3px}
+    .logo b{color:var(--brand)}
+    .nav a{color:var(--ink); text-decoration:none; font-weight:600; padding:10px 12px; border-radius:999px}
+    .nav a:hover{background:#fff}
+    .btn{appearance:none; border:0; border-radius:999px; padding:12px 16px; font-weight:700; cursor:pointer}
+    .btn-primary{background:var(--brand); color:#fff}
+    .btn-primary:hover{filter:brightness(.96)}
+    .btn-ghost{background:transparent; color:var(--brand-2); border:2px solid var(--brand-2)}
+    .btn-ghost:hover{background:rgba(16,185,129,.08)}
+
+    /* Hero split */
+    .hero{display:grid; grid-template-columns:1.2fr 1fr; gap:22px; align-items:stretch; padding:26px 0 0}
+    @media (max-width:960px){ .hero{grid-template-columns:1fr; padding-top:10px} }
+   .hero .image{border-radius:26px; overflow:hidden; box-shadow:var(--shadow); min-height:360px; background:#eee url('https://www.thecookierookie.com/wp-content/uploads/2024/05/street-tacos-recipe-2.jpg') center/cover no-repeat}
+    .hero .panel{background:var(--card); border-radius:26px; box-shadow:var(--shadow); padding:26px}
+    .eyebrow{font-weight:800; color:var(--brand); text-transform:uppercase; letter-spacing:.06em; font-size:.85rem}
+    .hero h1{font-size:clamp(28px,5vw,46px); margin:.2em 0 .3em}
+    .hero p{color:var(--muted); line-height:1.6}
+    .hero .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+
+    /* Sections */
+    section{padding:44px 0}
+    h2.section-title{text-align:center; font-size:clamp(22px,3.2vw,34px); margin:0 0 8px}
+    p.section-sub{color:var(--muted); text-align:center; margin:0 0 26px}
+
+    /* Card grid */
+    .grid{display:grid; gap:16px}
+    @media(min-width:760px){ .grid.cols-3{grid-template-columns:repeat(3, 1fr)} }
+    .card{background:var(--card); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
+    .card img{width:100%; height:200px; object-fit:cover}
+    .card .body{padding:14px}
+    .price{color:var(--brand); font-weight:800}
+    .add{width:100%}
+
+    /* Location bar */
+    .loc-bar{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .loc-bar input{flex:1 1 260px; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb}
+
+    /* Sticky cart */
+    .sticky-cart{position:fixed; left:50%; transform:translateX(-50%); bottom:18px; background:#111827; color:#fff; padding:10px 14px; border-radius:999px; display:flex; gap:12px; align-items:center; box-shadow:var(--shadow)}
+    .sticky-cart small{opacity:.8}
+
+    /* Modal */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.5); display:none; align-items:center; justify-content:center; padding:20px}
+    .modal .sheet{background:#fff; border-radius:16px; padding:20px; max-width:480px; width:100%; box-shadow:var(--shadow)}
+    .modal.open{display:flex}
+    .field{display:flex; gap:10px; margin:12px 0}
+    .field select, .field input{width:100%; padding:12px; border-radius:12px; border:1px solid #E5E7EB}
+
+    /* Footer */
+    footer{background:#0b1220; color:#e5e7eb; text-align:center; padding:26px; margin-top:44px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Habaneros <b>Modern Taco Bar</b></div>
+      <nav aria-label="Primary">
+        <a href="#popular">Menu</a>
+        <a href="#build">Build Your Own</a>
+        <a href="#locations">Locations</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn btn-primary" id="btnOrder">Order Online</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero" aria-labelledby="hero-title">
+      <div class="image" role="img" aria-label="Assorted tacos with fresh toppings"></div>
+      <div class="panel">
+        <div class="eyebrow">Fresh • Fast • Flame</div>
+        <h1 id="hero-title">Tacos, Bowls & Burritos – Made to Order</h1>
+        <p>Build your perfect combo with house salsas, fresh toppings, and bold proteins. Order ahead for pickup or delivery.
+        </p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="heroPickup">Order Pickup</button>
+          <button class="btn btn-ghost" id="heroDelivery">Order Delivery</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="popular">
+      <div class="container">
+        <h2 class="section-title">Popular Items</h2>
+        <p class="section-sub">Top picks—fast to order, faster to love.</p>
+        <div class="grid cols-3" id="popularGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="build" style="padding-top:0">
+      <div class="container">
+        <h2 class="section-title">Build Your Own</h2>
+        <p class="section-sub">Choose base, protein, toppings & extras. Your way, every time.</p>
+        <div class="grid cols-3" id="buildGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="locations">
+      <div class="container">
+        <h2 class="section-title">Find a Location</h2>
+        <p class="section-sub">Order from a nearby Habaneros.</p>
+        <div class="loc-bar" role="search">
+          <input id="locInput" type="text" placeholder="Enter city or postal code" aria-label="Enter city or postal code" />
+          <button class="btn btn-primary" id="locFind">Find</button>
+          <span id="locMsg" class="muted" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky cart summary -->
+  <div class="sticky-cart" id="cart" aria-live="polite">
+    <strong id="cartCount">0 items</strong>
+    <small>Subtotal: $<span id="cartTotal">0.00</span></small>
+    <button class="btn btn-primary" id="checkoutBtn" aria-haspopup="dialog">Checkout</button>
+  </div>
+
+  <!-- Pickup/Delivery modal -->
+  <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+    <div class="sheet">
+      <h3 id="orderTitle" style="margin-top:0">Start Your Order</h3>
+      <p class="muted">Choose service and time. You can change this later in the cart.</p>
+      <div class="field">
+        <select id="serviceType" aria-label="Service type">
+          <option value="pickup">Pickup</option>
+          <option value="delivery">Delivery</option>
+        </select>
+        <select id="pickupTime" aria-label="Time">
+          <option value="ASAP">ASAP (20–30 min)</option>
+          <option>12:00</option>
+          <option>12:30</option>
+          <option>13:00</option>
+          <option>13:30</option>
+        </select>
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:10px">
+        <button class="btn btn-ghost" id="cancelOrder">Cancel</button>
+        <button class="btn btn-primary" id="confirmOrder">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div class="container">© 2025 Habaneros Modern Taco Bar • This is a mockup for exploration</div>
+  </footer>
+
+  <script>
+   // --- Data (could be fetched from an API in production) ---
+   const popularItems = [
+     { id:'tacos-baja', name:'Baja Fish Tacos', price:11.50, img:'https://www.thespruceeats.com/thmb/sEUPiKsO0ws4PS-B8NOCjv2musU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/fish-taco-hero-01-71b3edd4ff2d4ac6bb372c53360605a1.jpg', desc:'Crispy fish, slaw, pico, chipotle crema.' },
+     { id:'burrito-steak', name:'Steak Burrito', price:12.75, img:'https://www.cholula.com/-/media/project/oneweb/cho21/recipes/chili_garlic_recipe_mix_lifestyle_tip_recipe_chili_garlic_steak_burritos_0175_1376x774.jpg?rev=-1&vd=00010101T000000Z&extension=webp&hash=4CCA274DF6FD9712B740773090362B5F', desc:'Cilantro rice, black beans, salsa roja.' },
+     { id:'bowl-veggie', name:'Veggie Bowl', price:10.95, img:'https://forkfulofplants.com/wp-content/uploads/2021/02/Vegan-Mexican-Bowl-24.jpg', desc:'Grilled veggies, guac, corn salsa.' }
+   ];
+
+   const buildItems = [
+     { id:'base', name:'Choose a Base', price:0, img:'https://www.allrecipes.com/thmb/OtOoEcD4EiFfIUV385Q8b4wc10E=/1900x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/728-Mexican-food-category-header-image-DDMFS-3x1-17595-39cf9720cd504afd8c820ed1b6ebd74e.jpg', desc:'Tacos • Bowl • Burrito' },
+     { id:'protein', name:'Pick a Protein', price:0, img:'https://cdn.media.amplience.net/i/traeger/20180613-Grilled-Carne-Asada-Skirt-Steak_RE_HE_M?scaleFit=poi%26%24poi2%24&fmt=auto&w=1680&qlt=default', desc:'Chicken • Steak • Carnitas • Veggie' },
+     { id:'toppings', name:'Toppings & Extras', price:0, img:'https://www.appetiteforenergy.com/wp-content/uploads/2017/07/Vertical-30-Minute-Low-Carb-Taco-Burrito-Bowl.jpg', desc:'Guac • Cheese • Corn • Pico • Crema' }
+   ];
+
+   // --- Helpers ---
+   const $ = sel => document.querySelector(sel);
+   const $$ = sel => document.querySelectorAll(sel);
+
+   function money(v){ return v.toFixed(2); }
+
+   function cardTemplate(item){
+     const article = document.createElement('article');
+     article.className = 'card';
+     article.innerHTML = `
+       <img src="${item.img}" alt="${item.name}" loading="lazy"/>
+        <div class="body">
+          <h3>${item.name}</h3>
+          <p class="muted">${item.desc}</p>
+          ${item.price ? `<div class='price'>$${money(item.price)}</div>` : ''}
+          <button class="btn btn-primary add" data-id="${item.id}" data-price="${item.price}">Add</button>
+        </div>`;
+      return article;
+    }
+
+    function fillGrid(gridId, items){
+      const grid = document.getElementById(gridId);
+      items.forEach(i => grid.appendChild(cardTemplate(i)));
+    }
+
+    // --- Render initial grids ---
+    fillGrid('popularGrid', popularItems);
+    fillGrid('buildGrid', buildItems);
+
+    // --- Cart logic (demo) ---
+    const cart = { count:0, total:0 };
+    function updateCart(){
+      $('#cartCount').textContent = `${cart.count} item${cart.count!==1?'s':''}`;
+      $('#cartTotal').textContent = money(cart.total);
+    }
+    updateCart();
+
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.add');
+      if(btn){
+        const price = parseFloat(btn.dataset.price||'0');
+        cart.count += 1; cart.total += price; updateCart();
+      }
+    });
+
+    // --- Order modal ---
+    const orderModal = $('#orderModal');
+    function openOrder(){ orderModal.classList.add('open'); }
+    function closeOrder(){ orderModal.classList.remove('open'); }
+    $('#btnOrder').addEventListener('click', openOrder);
+    $('#heroPickup').addEventListener('click', ()=>{ $('#serviceType').value='pickup'; openOrder(); });
+    $('#heroDelivery').addEventListener('click', ()=>{ $('#serviceType').value='delivery'; openOrder(); });
+    $('#cancelOrder').addEventListener('click', closeOrder);
+    $('#confirmOrder').addEventListener('click', ()=>{
+      const svc = $('#serviceType').value; const t = $('#pickupTime').value;
+      closeOrder();
+      alert(`Order started: ${svc.toUpperCase()} • ${t}`);
+    });
+
+    // --- Location finder (demo) ---
+    $('#locFind').addEventListener('click', ()=>{
+      const q = $('#locInput').value.trim();
+      if(!q){ $('#locMsg').textContent = 'Enter a city or postal code to see nearby locations.'; return; }
+      $('#locMsg').textContent = `Nearest location for “${q}”: 123 Market St • Pickup in ~20 min`;
+    });
+
+    // --- Checkout (demo) ---
+    $('#checkoutBtn').addEventListener('click', ()=>{
+      alert(`Checkout — Items: ${cart.count} • Subtotal: $${money(cart.total)}\n(This is a mock. In production this goes to the ordering provider.)`);
+    });
+  </script>
+</body>
+</html>
