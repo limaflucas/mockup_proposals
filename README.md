@@ -8,7 +8,7 @@ You’ll find preview images and links to almost fully functional prototypes.
 
 ## 📂 Mockups
 
-### 1. [Fancy Lebanese Bakery](https://dlt-proposals.s3.ca-central-1.amazonaws.com/mockup_fancy_lebanese_bakery.html)
+### 1. [Fancy Lebanese Bakery](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/fancy_lebanese/mockup_fancy_lebanese_bakery.html)
  <!-- ![Finbars Mockup Preview](./previews/finbars.png) -->
 
 Key Features:
@@ -18,7 +18,7 @@ Key Features:
 
 ---
 
-### 2. <a href="https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/reorg/habaneros/mockup_habaneros.html" target="_blank">Habaneros Modern Taco Bar</a>
+### 2. [Habaneros Modern Taco Bar](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/habaneros/mockup_habaneros.html)
 <!-- ![Parsons Mockup Preview](./previews/parsons.png) -->
 
 Key Features:
@@ -28,11 +28,22 @@ Key Features:
 
 ---
 
-### 3. [Company Name Placeholder](#)  
-![Placeholder Preview](./previews/placeholder.png)
+### 3. [Finbar's Irish Pub](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/finbars/mockup_finbars.html)
+<!-- ![Placeholder Preview](./previews/placeholder.png) -->
 
 Key Features:
-- Example structure for future projects
-- Ready-to-customize design
+- Food & Events Tabs in the Hero – a split hero with cozy pub imagery and a content panel that lets visitors switch between Menu and Events directly on the homepage.
+- Rewards & Loyalty Section – a dedicated area highlighting the points program, member perks, and a call-to-action to join.
+- Visit Us with Reservation Flow – integrated location details, map placeholder, contact buttons, and a simple reservation modal for booking a table.
+
+---
+
+### 4. [Parsons ICF Construction](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/parsons_icf/mockup_parsons_icf_construction.html)
+<!-- ![Placeholder Preview](./previews/placeholder.png) -->
+
+Key Features:
+- Our Story & Approach – a credibility-driven section with highlights (certified installers, safety, tidy sites) and a clear list of offered services (foundations, additions, commercial, pre-construction).
+- Featured Projects with Filters – a portfolio grid where users can filter projects by category (Homes, Cottages, Commercial) to quickly see relevant examples.
+- Service Area & Contact with Quote Form – an integrated contact panel including a request-a-quote form, quick call/email buttons, and a book a site visit option, paired with a service area map.
 
 ---
