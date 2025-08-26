@@ -18,7 +18,7 @@ Key Features:
 
 ---
 
-### 2. [Habaneros Modern Taco Bar](./habaneros/mockup_habaneros.html)  
+### 2. [Habaneros Modern Taco Bar](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/reorg/habaneros/mockup_habaneros.html)  
 <!-- ![Parsons Mockup Preview](./previews/parsons.png) -->
 
 Key Features:
