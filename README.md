@@ -8,7 +8,7 @@ You’ll find preview images and links to almost fully functional prototypes.
 
 ## 📂 Mockups
 
-### 1. [Fancy Lebanese Bakery](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/fancy_lebanese/mockup_fancy_lebanese_bakery.html)
+### 1. [Fancy Lebanese Bakery](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/master/fancy_lebanese/mockup_fancy_lebanese_bakery.html)
  <!-- ![Finbars Mockup Preview](./previews/finbars.png) -->
 
 Key Features:
@@ -18,7 +18,7 @@ Key Features:
 
 ---
 
-### 2. [Habaneros Modern Taco Bar](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/habaneros/mockup_habaneros.html)
+### 2. [Habaneros Modern Taco Bar](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/master/habaneros/mockup_habaneros.html)
 <!-- ![Parsons Mockup Preview](./previews/parsons.png) -->
 
 Key Features:
@@ -28,7 +28,7 @@ Key Features:
 
 ---
 
-### 3. [Finbar's Irish Pub](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/finbars/mockup_finbars.html)
+### 3. [Finbar's Irish Pub](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/master/finbars/mockup_finbars.html)
 <!-- ![Placeholder Preview](./previews/placeholder.png) -->
 
 Key Features:
@@ -38,7 +38,7 @@ Key Features:
 
 ---
 
-### 4. [Parsons ICF Construction](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/parsons_icf/mockup_parsons_icf_construction.html)
+### 4. [Parsons ICF Construction](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/master/parsons_icf/mockup_parsons_icf_construction.html.html)
 <!-- ![Placeholder Preview](./previews/placeholder.png) -->
 
 Key Features:
