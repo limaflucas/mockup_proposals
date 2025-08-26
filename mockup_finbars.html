@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finbar’s Irish Pub – Balanced (Option C)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23155e3a' d='M8 40c0-14 12-26 26-26 9 0 16 6 21 12 3 4 3 9 3 13 0 12-10 22-24 22S8 52 8 40z'/%3E%3C/svg%3E"/>
+  <style>
+    :root{
+      --bg:#fffdf7;         /* warm cream */
+      --ink:#1f2937;        /* gray-800 */
+      --muted:#6b7280;      /* gray-500 */
+      --brand:#155e3a;      /* deep Irish green */
+      --accent:#d4a72c;     /* warm gold */
+      --card:#ffffff;       /* white */
+      --shadow:0 10px 24px rgba(0,0,0,.08);
+      --radius:18px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink)}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; background:rgba(255,253,247,.85); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
+    .logo{font-weight:800; letter-spacing:.3px; display:flex; align-items:center; gap:10px}
+    .logo b{color:var(--brand)}
+    .nav a{color:var(--ink); text-decoration:none; font-weight:600; padding:10px 12px; border-radius:999px}
+    .nav a:hover{background:#fff}
+    .btn{appearance:none; border:0; border-radius:999px; padding:12px 16px; font-weight:700; cursor:pointer}
+    .btn-primary{background:var(--brand); color:#fff}
+    .btn-primary:hover{filter:brightness(.96)}
+    .btn-ghost{background:transparent; color:var(--brand); border:2px solid var(--brand)}
+    .btn-ghost:hover{background:rgba(21,94,58,.08)}
+
+    /* Hero split */
+    .hero{display:grid; grid-template-columns:1.15fr 1fr; gap:22px; align-items:stretch; padding:26px 0 0}
+    @media (max-width:960px){ .hero{grid-template-columns:1fr; padding-top:10px} }
+    .hero .image{position:relative; border-radius:26px; overflow:hidden; box-shadow:var(--shadow); min-height:360px; background:#eee url('https://dashboardliving.com/wp-content/uploads/2018/05/Finbars-1.jpg') center/cover no-repeat}
+    .hero .image::after{content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(21,94,58,.35), rgba(0,0,0,.15));}
+    .hero .panel{background:var(--card); border-radius:26px; box-shadow:var(--shadow); padding:26px}
+    .eyebrow{font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; font-size:.85rem}
+    .hero h1{font-size:clamp(28px,5vw,46px); margin:.2em 0 .3em}
+    .hero p{color:var(--muted); line-height:1.6}
+    .hero .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+
+    /* Tabs */
+    .tabs{margin-top:10px}
+    .tablist{display:flex; gap:8px; flex-wrap:wrap}
+    .tablist button{background:#fff; border:2px solid #e5e7eb; color:var(--ink); padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer}
+    .tablist button[aria-selected="true"], .tablist button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .tabpanel{display:none; padding:18px 0}
+    .tabpanel.active{display:block}
+
+    /* Sections */
+    section{padding:44px 0}
+    h2.section-title{text-align:center; font-size:clamp(22px,3.2vw,34px); margin:0 0 8px}
+    p.section-sub{color:var(--muted); text-align:center; margin:0 0 26px}
+
+    /* Card grid */
+    .grid{display:grid; gap:16px}
+    @media(min-width:760px){ .grid.cols-3{grid-template-columns:repeat(3, 1fr)} }
+    .card{background:var(--card); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
+    .card img{width:100%; height:200px; object-fit:cover}
+    .card .body{padding:14px}
+    .price{color:var(--brand); font-weight:800}
+
+    /* List (events) */
+    .list{display:grid; gap:12px}
+    .list .row{display:flex; gap:12px; align-items:flex-start; background:#fff; padding:14px; border-radius:14px; box-shadow:var(--shadow)}
+    .badge{background:var(--brand); color:#fff; border-radius:10px; padding:6px 10px; font-weight:700; font-size:.85rem}
+
+    /* Loyalty / Rewards */
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    @media (max-width:920px){ .split{grid-template-columns:1fr} }
+    .panel{background:#fff; border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+
+    /* Location / Reservations */
+    .location{display:grid; grid-template-columns:1.3fr 1fr; gap:18px}
+    @media (max-width:920px){ .location{grid-template-columns:1fr} }
+    .map{border-radius:16px; overflow:hidden; box-shadow:var(--shadow); background:#eee url('https://listingsca.com/common/maps/ca/ns-Bedford.gif') center/cover no-repeat; min-height:320px}
+
+    /* Footer */
+    footer{background:#111827; color:#e5e7eb; text-align:center; padding:26px; margin-top:44px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <!-- inline SVG clover mark -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="%23155e3a" d="M12 2c1.7 0 3 1.3 3 3 0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3h-3V5c0-1.7-1.3-3-3-3zM9 5v3H6C4.3 8 3 6.7 3 5s1.3-3 3-3 3 1.3 3 3zM12 16c-1.7 0-3-1.3-3-3 0 1.7-1.3 3-3 3s-3-1.3-3-3 1.3-3 3-3h3v3c0 1.7 1.3 3 3 3zM15 13v-3h3c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3z"/></svg>
+        <span>Finbar’s <b>Irish Pub</b></span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#events">Events</a>
+        <a href="#loyalty">Rewards</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <button class="btn btn-primary" id="orderBtn">Order Online</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero" aria-labelledby="hero-title">
+      <div class="image" role="img" aria-label="Cozy Irish pub interior with warm lighting"></div>
+      <div class="panel">
+        <div class="eyebrow">Neighbourhood • Since 2004</div>
+        <h1 id="hero-title">Authentic Irish Hospitality</h1>
+        <p>Comfort food, cold pints, and a warm welcome. Join us for live music, trivia, and seasonal specials — or order your favourites for pickup.</p>
+        <div class="tabs">
+          <div class="tablist" role="tablist" aria-label="Primary content">
+            <button class="tab btn-ghost active" role="tab" aria-selected="true" aria-controls="tab-food" id="tabbtn-food">Food</button>
+            <button class="tab btn-ghost" role="tab" aria-selected="false" aria-controls="tab-events" id="tabbtn-events">Events</button>
+          </div>
+          <div id="tab-food" class="tabpanel active" role="tabpanel" aria-labelledby="tabbtn-food">
+            <div class="grid cols-3" id="menuGrid" aria-live="polite"></div>
+          </div>
+          <div id="tab-events" class="tabpanel" role="tabpanel" aria-labelledby="tabbtn-events">
+            <div class="list" id="eventsList" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="hero cta-row">
+          <button class="btn btn-primary" id="seeMenu">See Full Menu</button>
+          <button class="btn btn-ghost" id="bookTable">Book a Table</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="loyalty">
+      <div class="container">
+        <h2 class="section-title">Rewards & Loyalty</h2>
+        <p class="section-sub">Earn points on every visit. Exclusive offers and member events.</p>
+        <div class="split">
+          <div class="panel">
+            <h3>Join Finbar’s Rewards</h3>
+            <p class="muted">Sign up in seconds. Scan your receipt to collect points, redeem for favourites, and get first dibs on special events.</p>
+            <button class="btn btn-primary">Join Now</button>
+          </div>
+          <div class="panel">
+            <h3>Member Perks</h3>
+            <ul>
+              <li>Welcome bonus points</li>
+              <li>Birthday treat</li>
+              <li>Seasonal offers</li>
+              <li>Early access to ticketed nights</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="container">
+        <h2 class="section-title">Visit Us</h2>
+        <p class="section-sub">1595 Bedford Highway, Sunnyside Mall, Bedford, NS</p>
+        <div class="location">
+          <div class="map" role="img" aria-label="Map to Finbar's Irish Pub"></div>
+          <div class="panel">
+            <h3>Hours</h3>
+            <p class="muted">Mon–Thu 11:30–22:00 • Fri–Sat 11:30–23:30 • Sun 11:30–21:00</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn btn-primary" href="tel:+19027076956">Call</a>
+              <a class="btn btn-ghost" href="https://maps.apple.com/?q=Finbar%27s+Irish+Pub" target="_blank" rel="noopener">Directions</a>
+              <button class="btn btn-ghost" id="reserveBtn">Reserve</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 Finbar’s Irish Pub • Mockup for exploration</div>
+  </footer>
+
+  <!-- Reservation Modal (simple) -->
+  <dialog id="resModal" style="border:none; border-radius:16px; padding:0; max-width:520px; width:100%">
+    <form method="dialog" style="background:#fff; border-radius:16px; padding:18px; box-shadow:var(--shadow)">
+      <h3 style="margin:0 0 8px">Book a Table</h3>
+      <p class="muted" style="margin:0 0 12px">This is a demo form. In production, connect to a reservation provider.</p>
+      <div style="display:grid; gap:10px; grid-template-columns:1fr 1fr">
+        <input required type="date" />
+        <input required type="time" />
+        <input required type="number" min="1" max="12" placeholder="# Guests" />
+        <input type="text" placeholder="Name" />
+        <input type="tel" placeholder="Phone" />
+        <input type="email" placeholder="Email" />
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:12px">
+        <button class="btn btn-ghost" value="cancel">Cancel</button>
+        <button class="btn btn-primary" value="confirm">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+   // --- Demo data ---
+   const menu = [
+       {name:'Fish & Chips', price:16.50, img:'https://i0.wp.com/travelandmunchies.com/wp-content/uploads/2022/12/IMG_9513-scaled.jpg?w=2560&ssl=1', desc:'Crispy haddock, hand-cut chips, house tartar.'},
+       {name:'Irish Stew', price:15.00, img:'https://hips.hearstapps.com/hmg-prod/images/blizzard-meal-ideas-irish-stew-677c134e70940.jpg?resize=980:*', desc:'Braised beef, root vegetables, soda bread.'},
+       {name:'Classic Burger', price:14.50, img:'https://www.theredheadbaker.com/wp-content/uploads/2021/05/irish-burgers-06-731x1024.jpg.webp', desc:'Cheddar, lettuce, tomato, Finbar’s sauce.'}
+   ];
+
+   const events = [
+       {date:'Fri 7:30 PM', name:'Live Music: The Shamrocks'},
+       {date:'Tue 7:00 PM', name:'Trivia Night'},
+       {date:'Sat 9:00 PM', name:'Karaoke'}
+   ];
+
+   // --- Helpers ---
+   const $ = sel => document.querySelector(sel);
+
+   function renderMenu(){
+       const grid = document.getElementById('menuGrid');
+       grid.innerHTML = '';
+       menu.forEach(m => {
+           const card = document.createElement('article');
+           card.className = 'card';
+           card.innerHTML = `
+               <img src="${m.img}" alt="${m.name}" loading="lazy"/>
+          <div class="body">
+            <h3>${m.name}</h3>
+            <p class="muted">${m.desc}</p>
+            <div class="price">$${m.price.toFixed(2)}</div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderEvents(){
+      const list = document.getElementById('eventsList');
+      list.innerHTML = '';
+      events.forEach(ev => {
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.innerHTML = `<span class="badge">${ev.date}</span><div><strong>${ev.name}</strong><div class="muted">Free entry • All ages before 9</div></div>`;
+        list.appendChild(row);
+      });
+    }
+
+    // Initial render
+    renderMenu();
+    renderEvents();
+
+    // Tabs logic
+    const foodBtn = document.getElementById('tabbtn-food');
+    const eventsBtn = document.getElementById('tabbtn-events');
+    const tabFood = document.getElementById('tab-food');
+    const tabEvents = document.getElementById('tab-events');
+
+    function activate(tab){
+      const isFood = tab === 'food';
+      foodBtn.classList.toggle('active', isFood);
+      foodBtn.setAttribute('aria-selected', String(isFood));
+      eventsBtn.classList.toggle('active', !isFood);
+      eventsBtn.setAttribute('aria-selected', String(!isFood));
+      tabFood.classList.toggle('active', isFood);
+      tabEvents.classList.toggle('active', !isFood);
+    }
+    foodBtn.addEventListener('click', ()=>activate('food'));
+    eventsBtn.addEventListener('click', ()=>activate('events'));
+
+    // Hero CTAs
+    document.getElementById('seeMenu').addEventListener('click', ()=>{
+      activate('food');
+      window.location.hash = '#menu';
+    });
+
+    document.getElementById('orderBtn').addEventListener('click', ()=>{
+      activate('food');
+      alert('This is a mock. In production, link to the ordering provider.');
+    });
+
+    // Reservation modal
+    const resModal = document.getElementById('resModal');
+    document.getElementById('bookTable').addEventListener('click', ()=>{
+      resModal.showModal();
+    });
+    document.getElementById('reserveBtn').addEventListener('click', ()=>{
+      resModal.showModal();
+    });
+  </script>
+</body>
+</html>
