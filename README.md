@@ -38,7 +38,7 @@ Key Features:
 
 ---
 
-### 4. [Parsons ICF Construction](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/master/parsons_icf/mockup_parsons_icf_construction.html.html)
+### 4. [Parsons ICF Construction](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/master/parsons_icf/mockup_parsons_icf_construction.html)
 <!-- ![Placeholder Preview](./previews/placeholder.png) -->
 
 Key Features:
