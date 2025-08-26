@@ -18,7 +18,7 @@ Key Features:
 
 ---
 
-### 2. [Habaneros Modern Taco Bar](https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/reorg/habaneros/mockup_habaneros.html){:target="_blank"}
+### 2.<a href="https://html-preview.github.io/?url=https://github.com/limaflucas/mockup_proposals/blob/reorg/habaneros/mockup_habaneros.html" target="_blank_">Habaneros Modern Taco Bar</a>
 <!-- ![Parsons Mockup Preview](./previews/parsons.png) -->
 
 Key Features:
